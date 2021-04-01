@@ -1,0 +1,48 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "typeRoots": [
+      "node_modules/@types",
+      "typings",
+    ],
+    "moduleResolution": "node",
+    "lib": [
+      "esnext",
+      "esnext.asynciterable",
+      "dom",
+    ],
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "outDir": "dist",
+    "sourceMap": true,
+    "jsx": "react-native",
+    "resolveJsonModule": true,
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "strict": true,
+    "baseUrl": "src",
+    "declaration": true,
+    "esModuleInterop": true,
+    "paths": {
+      "~/*": [
+        "./*"
+      ],
+      "@/*": [
+        "./*"
+      ]
+    },
+  },
+  "files": [
+    "src/typings/index.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "**/**/dist/**/*",
+    "**/*.js",
+  ]
+}
