@@ -1,3 +1,4 @@
+import { MenusColors, MenusHead, MenusToolBar } from "@/constants/menus.constants";
 import Editor from "..";
 
 declare global {
@@ -6,3 +7,58 @@ declare global {
   }
 }
 
+/**
+ * Editor namespace
+ */
+export namespace EditorNS {
+  /**
+   * 元素选择器
+   */
+  export type SelectElement = string | HTMLElement | Element | HTMLBodyElement;
+
+  /**
+   * 菜单配置
+   */
+  export interface MenusConfig {
+    /**
+     * 配置工具栏
+     * @description 配置菜单栏、删减菜单、调整顺序
+     * @enum (MenusToolBar) or (set false disable)
+     * @see <https://github.com/shi-lai-mu/slm-editor/docs/toolbar.md>
+     */
+    toolbar?: MenusToolBar[] | false;
+    /**
+     * 配置颜色
+     * @description 编辑器的字体颜色和背景色
+     * @enum (MenusToolBar) or (set false disable)
+     * @see <https://github.com/shi-lai-mu/slm-editor/docs/colors.md>
+     */
+    colors?: MenusColors[] | string[] | false;
+    /**
+     * 配置加粗 粗细
+     * @description 编辑器加粗内容的粗细
+     * @see <https://github.com/shi-lai-mu/slm-editor/docs/bold.md>
+     */
+    bold?: number | false;
+    /**
+     * 配置标题
+     * @description 配置菜单栏标题、删减标题、调整顺序
+     * @see <https://github.com/shi-lai-mu/slm-editor/docs/bold.md>
+     */
+    head?: MenusHead | false;
+  }
+
+  /**
+   * 创建配置
+   */
+  export type CreateOptions = {
+    /**
+     * 创建编辑器的元素选择参数
+     */
+    select: SelectElement;
+    /**
+     * 编辑器 菜单栏 配置
+     */
+    menus?: MenusConfig;
+  } | SelectElement
+}

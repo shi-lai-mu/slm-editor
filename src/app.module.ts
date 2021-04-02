@@ -3,6 +3,7 @@ import { BodyModel } from './body';
 import { Module } from '@core/decorators/module.decorators';
 import { MenusModel } from './menus';
 import { MenusRegConfig } from './menus/decorators';
+import { EditorNS } from './typings';
 
 /**
  * 编辑器类 (总模块 注入点)
@@ -15,12 +16,14 @@ import { MenusRegConfig } from './menus/decorators';
   ],
 })
 export default class AppModule {
-  @MenusRegConfig('test')
-  config: any = {
-    hhh: 'test'
-  }
+  /**
+   * 默认配置
+   */
+  @MenusRegConfig('menus')
+  config: EditorNS.CreateOptions = {
+    select: '#editor1',
+  };
 
-  public xxx = 132456
 
   /**
    * 构造函数 [初始化编辑器]
