@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
     "typeRoots": [
       "node_modules/@types",
@@ -14,11 +14,11 @@
       "dom",
     ],
     "forceConsistentCasingInFileNames": true,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowJs": true,
-    "outDir": "dist",
     "sourceMap": true,
-    "jsx": "react-native",
+    "outDir": "dist",
     "resolveJsonModule": true,
     "noImplicitAny": false,
     "noImplicitReturns": true,
@@ -28,17 +28,13 @@
     "declaration": true,
     "esModuleInterop": true,
     "paths": {
-      "~/*": [
-        "./*"
-      ],
-      "@/*": [
-        "./*"
-      ]
+      "@/*": [ "./*" ],
+      "@core/*": [ "./core/*" ],
+      "@conts/*": [ "./conts/*" ],
+      "@types/*": [ "./typings/*" ],
+      "@cfg/*": [ "./config/*" ],
     },
   },
-  "files": [
-    "src/typings/index.d.ts"
-  ],
   "exclude": [
     "node_modules",
     "build",

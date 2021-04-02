@@ -11,11 +11,18 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js'],
+    alias: {
+      '@': path.resolve('src'),
+      '@core': path.resolve('src/core'),
+      '@conts': path.resolve('src/conts'),
+      '@types': path.resolve('src/typings'),
+      '@cfg': path.resolve('src/config'),
+    },
   },
   module: {
     rules: [
       {
-        test: /\.(ts|js)$/,
+        test: /\.(t|j)s$/,
         use: ['babel-loader', 'ts-loader'],
         include: /src/,
         exclude: /node_modules/,
