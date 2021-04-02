@@ -17,13 +17,21 @@ export const MenuModule = (options?: any) => {
 /**
  * 标记方法为公共方法
  */
-export const GlobalFunction = (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
-  globalFunctionMap.push({
-    name: propertyKey,
-    target,
-    fn: descriptor.value.bind(target),
-  });
-};
+export function GlobalFunction(): MethodDecorator {
+  return (
+    target: any,
+    key?: string | symbol,
+    descriptor?: TypedPropertyDescriptor<any>,
+  ) => {
+    console.log({target: target.constructor.name});
+    
+    globalFunctionMap.push({
+      name: target.constructor.name,
+      target,
+      fn: descriptor?.value.bind(target),
+    });
+  };
+}
 
 export const InjectGlobalFunction = (constructor: any) => {
   globalFunctionMap.forEach(gbFnItem => {

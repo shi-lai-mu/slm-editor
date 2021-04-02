@@ -1,5 +1,4 @@
-import { GlobalFunction } from '@/core/decorators';
-import { Module } from '@/core/decorators/module.decorators';
+import { GlobalApi, Module } from '@/core/decorators/module.decorators';
 import { MenusFontModule } from './modules/font';
 
 /**
@@ -8,7 +7,7 @@ import { MenusFontModule } from './modules/font';
 @Module({
   imports: [
     MenusFontModule,
-  ]
+  ],
 })
 export class MenusModel {
   
@@ -18,9 +17,9 @@ export class MenusModel {
     this.test('x');
   }
 
-  @GlobalFunction
+  @GlobalApi()
   public test(ca) {
-    console.log('---->');
+    console.log('---->111111111111111');
     
     console.log(this.xxx);
   }

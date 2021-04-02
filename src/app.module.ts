@@ -1,4 +1,4 @@
-import { Injectable } from '@core/decorators';
+// import { Injectable } from '@core/decorators';
 import { BodyModel } from './body';
 import { Module } from '@core/decorators/module.decorators';
 import { MenusModel } from './menus';
@@ -7,7 +7,7 @@ import { MenusRegConfig } from './menus/decorators';
 /**
  * 编辑器类 (总模块 注入点)
  */
-@Injectable
+// @Injectable
 @Module({
   imports: [
     MenusModel,
