@@ -22,7 +22,7 @@
     "resolveJsonModule": true,
     "noImplicitAny": false,
     "noImplicitReturns": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "strict": true,
     "baseUrl": "src",
     "declaration": true,
