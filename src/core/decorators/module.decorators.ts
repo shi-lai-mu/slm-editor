@@ -26,11 +26,14 @@ export function Module(metadata: ModuleMetadata): ClassDecorator {
         Reflect.defineProperty(
           target,
           ReflectProperty.IMPORTS_EXTRACT,
-          propertySealDescriptor(metadata[property]?.map((v: any) => findTarget(v))),
+          propertySealDescriptor(metadata[property]?.map((v: any) => {
+            const find = findTarget(v);
+            return find;
+          })),
         );
       }
     }
-    
+      
     if (metadata.exports) {
       metadata.exports.forEach(expModuel => {
         const curMetadata = (expModuel as Function).prototype[ReflectProperty.GLOBALAPI];
@@ -68,12 +71,29 @@ function findTarget(target: Function): Function | null {
   }
 
   if (!symbolId) {
-    symbolId = extractClass.push(new (target as { new (): typeof target })());
+    symbolId = extractClass.push(new (target as { new (): typeof target })()) - 1;
     Reflect.defineMetadata(target, ReflectProperty.ID, propertySealDescriptor(symbolId));
   }
 
   return extractClass[symbolId] || null;
 }
+
+
+/**
+ * 注入依赖
+ * @param targetExtract 依赖项
+ */
+export function Inject(targetExtract?: Function): PropertyDecorator {
+  console.log({x: arguments});
+  return function (target: Object, key: string | symbol) {
+    const token = targetExtract || Reflect.getMetadata('design:type', target, key);
+    console.log('x', findTarget(token), token);
+    
+    Reflect.defineProperty(target, key, {
+      value: findTarget(token),
+    });
+  };
+} 
 
 
 /**

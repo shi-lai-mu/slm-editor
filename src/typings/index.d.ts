@@ -14,12 +14,23 @@ export namespace EditorNS {
   /**
    * 元素选择器
    */
-  export type SelectElement = string | HTMLElement | Element | HTMLBodyElement;
+  export type SelectorElement = string
+    | HTMLElement
+    | HTMLElement[]
+    | HTMLCollection
+    | Element
+    | Document
+    | HTMLBodyElement
+  ;
 
   /**
    * 菜单配置
    */
   export interface MenusConfig {
+    /**
+     * 菜单节点选择器
+     */
+    selector: SelectorElement;
     /**
      * 配置工具栏
      * @description 配置菜单栏、删减菜单、调整顺序
@@ -55,10 +66,10 @@ export namespace EditorNS {
     /**
      * 创建编辑器的元素选择参数
      */
-    select: SelectElement;
+     selector: SelectorElement;
     /**
      * 编辑器 菜单栏 配置
      */
     menus?: MenusConfig;
-  } | SelectElement
+  } | SelectorElement
 }

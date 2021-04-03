@@ -8,5 +8,6 @@ export enum ReflectProperty {
   ID              = '_id',
   IMPORTS         = '_imports',
   IMPORTS_EXTRACT = '_imports_extract',
-  GLOBALAPI       = '_global_api'
+  GLOBALAPI       = '_global_api',
+  MENU_CONFIG     = 'meta_menu_config',
 }

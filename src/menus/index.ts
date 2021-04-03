@@ -11,16 +11,11 @@ import { MenusFontModule } from './modules/font';
 })
 export class MenusModel {
   
-  public xxx = 11111111111111
 
   constructor() {
-    this.test('x');
   }
 
   @GlobalApi()
   public test(ca) {
-    console.log('---->111111111111111');
-    
-    console.log(this.xxx);
   }
 }
