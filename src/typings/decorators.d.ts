@@ -29,3 +29,7 @@ export interface Type<T = any> extends Function {
 export interface ForwardReference<T = any> {
   forwardRef: T;
 }
+
+export type Events = {
+  [K in keyof GlobalEventHandlersEventMap]?: (this: GlobalEventHandlers, ev: GlobalEventHandlersEventMap[K]) => any;
+}

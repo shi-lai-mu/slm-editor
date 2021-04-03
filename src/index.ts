@@ -9,6 +9,8 @@ import { MenusModel } from './menus';
 import { Module } from '@core/decorators/module.decorators';
 import { EditorNS } from './typings';
 
+import '@/assets/style/index.less';
+
 /**
  * 简单的编辑器
  */
@@ -26,7 +28,7 @@ export default class Editor {
   public $!: AppModule;
 
   /**
-   * 构造函数[创建编辑器]
+   * 构造函数 [创建编辑器]
    * @param editorOptions 编辑器配置
    */
   constructor(editorOptions: EditorNS.CreateOptions) {
@@ -52,3 +54,5 @@ export default class Editor {
 
 const newEditor = new Editor('#editor');
 window.editor = newEditor;
+
+console.log(newEditor);

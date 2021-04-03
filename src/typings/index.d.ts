@@ -62,7 +62,7 @@ export namespace EditorNS {
   /**
    * 创建配置
    */
-  export type CreateOptions = {
+   export type Options = {
     /**
      * 创建编辑器的元素选择参数
      */
@@ -71,5 +71,11 @@ export namespace EditorNS {
      * 编辑器 菜单栏 配置
      */
     menus?: MenusConfig;
-  } | SelectorElement
+  };
+
+  /**
+   * 创建配置
+   */
+  export type CreateOptions = Options | SelectorElement;
+
 }

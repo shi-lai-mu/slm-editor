@@ -2,11 +2,13 @@
  * 菜单工具 栏枚举
  */
 export enum MenusToolBar {
-  BOLD      = 'bold',
-  HEAD      = 'head',
-  LINK      = 'link',
-  ITALIC    = 'italic',
-  UNDERLINE = 'underlink',
+  FONT_BOLD  = 'FontBold',
+  FONT_HEAD  = 'FontHead',
+  FONT_COLOR = 'FontColor',
+  BG_COLOR   = 'BgColor',
+  LINK       = 'link',
+  ITALIC     = 'italic',
+  UNDERLINE  = 'underlink',
 }
 
 /**

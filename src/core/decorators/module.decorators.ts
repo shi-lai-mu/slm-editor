@@ -1,4 +1,4 @@
-import { ReflectProperty } from '@/constants/decorators.constants';
+import { MODULE_METADATA, ReflectProperty } from '@/constants/decorators.constants';
 import { propertySealDescriptor } from '@/utils';
 import { GlobalOptions, ModuleMetadata } from '../../typings/decorators.d'
 
@@ -33,7 +33,7 @@ export function Module(metadata: ModuleMetadata): ClassDecorator {
         );
       }
     }
-      
+
     if (metadata.exports) {
       metadata.exports.forEach(expModuel => {
         const curMetadata = (expModuel as Function).prototype[ReflectProperty.GLOBALAPI];
@@ -56,9 +56,9 @@ export function Module(metadata: ModuleMetadata): ClassDecorator {
  * 查找实例
  * @param target 原型
  */
-function findTarget(target: Function): Function | null {
+export function findTarget(target: Function): Function | null {
   let symbolId = target.constructor[ReflectProperty.ID];
-  
+
   if (!symbolId) {
     Object.keys(extractClass).some(key => {
       const extract = extractClass[key];
@@ -84,20 +84,53 @@ function findTarget(target: Function): Function | null {
  * @param targetExtract 依赖项
  */
 export function Inject(targetExtract?: Function): PropertyDecorator {
-  console.log({x: arguments});
   return function (target: Object, key: string | symbol) {
     const token = targetExtract || Reflect.getMetadata('design:type', target, key);
-    console.log('x', findTarget(token), token);
-    
     Reflect.defineProperty(target, key, {
       value: findTarget(token),
     });
   };
-} 
+}
 
 
 /**
- * 标记方法为公共方法
+ * 装饰器 标记类为可注射类
+ */
+export function Injectable(module: any): any {
+  return class extends module {
+    constructor(...args) {
+      super(...args);
+      const metaKeys = Reflect.getMetadataKeys(module);
+      Reflect.defineMetadata(
+        ReflectProperty.INJECT_INFO,
+        {
+          args,
+          origin: module,
+        },
+        this,
+      );
+
+      // 注射检测
+      metaKeys.forEach(key => {
+        const metaData = Reflect.getMetadata(key, module);
+        // console.log(key, metaData, this);
+        if (metaData?.type) {
+          switch(metaData.type) {
+            // 注射器注入
+            case MODULE_METADATA.INJECT:
+              metaData.Inject(args[metaData.index]);
+              break;
+          }
+        }
+      });
+      
+    }
+  };
+}
+
+
+/**
+ * 装饰器 标记方法为公共方法
  */
 export function GlobalApi(globalOptions?: GlobalOptions): MethodDecorator {
   return (

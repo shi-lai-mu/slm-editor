@@ -1,8 +1,8 @@
 // import { Injectable } from '@core/decorators';
 import { BodyModel } from './body';
-import { Inject, Module } from '@core/decorators/module.decorators';
+import { Inject, Injectable, Module } from '@core/decorators/module.decorators';
 import { MenusModel } from './menus';
-import { MenusRegConfig } from './menus/decorators';
+import { InjectRepository, ConfigInit } from './menus/decorators';
 import { EditorNS } from './typings';
 // import { ReflectProperty } from './constants/decorators.constants';
 
@@ -16,18 +16,19 @@ import { EditorNS } from './typings';
     BodyModel,
   ],
 })
+@Injectable
 export default class AppModule {
   /**
    * 默认配置
    */
-  @MenusRegConfig()
-  config: EditorNS.CreateOptions = {
+  
+  public config: EditorNS.CreateOptions = {
     selector: '#editor1',
   };
 
   
   @Inject()
-  private readonly menus?: MenusModel;
+  public readonly menus!: MenusModel;
 
 
   /**
@@ -35,11 +36,17 @@ export default class AppModule {
    * @param config 初始配置
    */
   constructor(
-    config: EditorNS.CreateOptions,
+    @InjectRepository(ConfigInit) config: EditorNS.CreateOptions,
   ) {
     this.config = config;
+    this.menus.init(config);
     console.log('init app module...', this);
-    console.log({menus: this.menus});
+    this.menus.render()
+    console.log();
     
+  }
+
+  render() {
+
   }
 };
