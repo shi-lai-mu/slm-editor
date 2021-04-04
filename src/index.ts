@@ -4,9 +4,6 @@
 
 import 'reflect-metadata';
 import AppModule from "./app.module";
-import { BodyModel } from './body';
-import { MenusModel } from './menus';
-import { Module } from '@core/decorators/module.decorators';
 import { EditorNS } from './typings';
 
 import '@/assets/style/index.less';
@@ -14,11 +11,6 @@ import '@/assets/style/index.less';
 /**
  * 简单的编辑器
  */
-@Module({
-  exports: [
-    AppModule,
-  ],
-})
 export default class Editor {
   /**
    * 内部app模块
