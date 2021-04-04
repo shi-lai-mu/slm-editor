@@ -10,7 +10,7 @@ module.exports = {
     filename: '[name].js',
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', '.svg'],
     alias: {
       '@': path.resolve('src'),
       '@core': path.resolve('src/core'),
@@ -28,8 +28,8 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.svg$/,
-        loader: 'raw-loader',
+        test: /\.svg/,
+        loader: 'file-loader',
       },
       {
         test: /\.css$/,
