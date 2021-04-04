@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="100"src="https://img.slmblog.com/LOGO.png" alt="SLM-BLOG LOGO"/>
+  <img width="100"src="https://img.slmblog.com/LOGO.png"/>
   <p></p>
   <p align="center">
     <a href="https://github.com/Microsoft/TypeScript">
