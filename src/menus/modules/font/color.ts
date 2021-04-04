@@ -49,7 +49,7 @@ export class MenusFontColorModule {
           {
             click: (e) => {
               e.stopPropagation();
-              this.body?.cmd('foreColor', false, 'red');
+              this.body?.cmd('foreColor', false, val);
             },
           },
         )[0];

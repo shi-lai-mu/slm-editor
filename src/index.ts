@@ -17,8 +17,6 @@ import '@/assets/style/index.less';
 @Module({
   exports: [
     AppModule,
-    MenusModel,
-    BodyModel,
   ],
 })
 export default class Editor {
