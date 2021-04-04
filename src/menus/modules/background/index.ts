@@ -1,4 +1,4 @@
-import { Module } from '@/core/decorators/module.decorators';
+import { Module } from '@core/decorators/module.decorators';
 import { MenusBackgroundColorModule } from './color';
 
 /**

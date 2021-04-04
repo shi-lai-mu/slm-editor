@@ -33,6 +33,7 @@ export default class Editor {
    */
   constructor(editorOptions: EditorNS.CreateOptions) {
     this.$ = new AppModule(editorOptions);
+    this.$.render();
   }
 
   /**

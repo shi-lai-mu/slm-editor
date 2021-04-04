@@ -10,8 +10,9 @@ export class DomBase {
    * 创建元素
    * @param html html字符串
    * @param events 绑定事件
+   * @param childrenEl 子元素
    */
-  static createElement(html: string, events?: Events): Element[] {
+  static createElement(html: string, events?: Events | false, childrenEl?: Element[]): Element[] {
     const tmpEl = document.createElement('div');
     tmpEl.innerHTML = html;
     if (events) {
@@ -19,7 +20,11 @@ export class DomBase {
         tmpEl.childNodes.forEach(node => node.addEventListener(type, events[type]));
       });
     }
-    return Object.values(tmpEl.children);
+    const $els = Object.values(tmpEl.children);
+    if (childrenEl) {
+      $els.forEach(el => el.append(...childrenEl));
+    }
+    return $els;
   }
 
 
