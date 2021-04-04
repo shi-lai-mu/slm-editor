@@ -2,9 +2,94 @@
 
   .s-toolbar {
     max-width: 1000px;
-    padding: 7px 10px;
     border: 1px solid rgba(0, 0, 0, .1);
     border-radius: 5px 5px 0 0;
     background-color: rgba(0, 0, 0, .2);
+    box-sizing: border-box;
+  }
+
+  .s-menu {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, .1);
+      
+      .s-menu-droplist {
+        display: block;
+      }
+    }
+  }
+
+  .s-text-container {
+    .s-toolbar;
+    min-height: 300px;
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+    border-top: 0;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .icon {
+    width: 20px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+
+  .colors-panel {
+    display: block;
+    width: 130px;
+    padding: 10px;
+
+    .colors-panel-color {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin: 0 5px;
+      border: 1px solid #CCC;
+      background-color: currentColor;
+
+      &:hover {
+        transform: scale(1.2);
+        border: 1px solid #333;
+        border-radius: 2px;
+      }
+    }
+  }
+
+  .s-menu-droplist {
+    position: absolute;
+    overflow: hidden;
+    display: none;
+    left: 0;
+    bottom: 0;
+    background-color: #AAA;
+    transform: translateY(100%);
+    border-radius: 0 0 5px 5px;
+    user-select: none;
+
+    .s-list-item {
+      padding: 2px 15px;
+      &:hover {
+        background-color: #999;
+        cursor: pointer;
+      }
+
+      &:active {
+        background-color: #888;
+      }
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    line-height: 2.3rem;
+    text-align: center;
   }
 }
