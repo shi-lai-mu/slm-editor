@@ -113,17 +113,19 @@ export function Injectable(module: any): any {
       // 注射检测
       metaKeys.forEach(key => {
         const metaData = Reflect.getMetadata(key, module);
-        // console.log(key, metaData, this);
-        if (metaData?.type) {
-          switch(metaData.type) {
-            // 注射器注入
-            case MODULE_METADATA.INJECT:
-              metaData.Inject(args[metaData.index]);
-              break;
-          }
+        const { Inject, type, name, index } = metaData;
+        switch(type) {
+          // 注射器注入方法
+          case MODULE_METADATA.INJECT:
+            metaData.Inject(args[index]);
+            break;
+
+          // 注射器预注射模块
+          case MODULE_METADATA.INJECT_MODULE:
+            this[name] = findTarget(Inject)
+            break;
         }
       });
-      
     }
   };
 }
@@ -131,6 +133,9 @@ export function Injectable(module: any): any {
 
 /**
  * 装饰器 标记方法为公共方法
+ * @param globalOptions 标记配置
+ * 
+ * @description 用于标记该方法为(根/上级)的方法，当方法被标记那么在(根/上级)模块方法中会出现这个方法并且this指向为当前模块
  */
 export function GlobalApi(globalOptions?: GlobalOptions): MethodDecorator {
   return (
