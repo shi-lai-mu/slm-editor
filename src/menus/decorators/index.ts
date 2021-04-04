@@ -8,13 +8,13 @@ let configDb: EditorNS.CreateOptions = '';
  * @param Inject 注射器
  * @publicApi
  */
-export const InjectRepository = (Inject: Function, name?: string): ParameterDecorator => {
+export function InjectRepository(Inject: Function, name?: string, injectType?: MODULE_METADATA): ParameterDecorator {
   return function (target: Object, _name: string | symbol, index?: number) {
     Reflect.defineMetadata(
       ReflectProperty.INJECT_CONFIG,
       {
-        type: MODULE_METADATA.INJECT,
-        name,
+        type: injectType || MODULE_METADATA.INJECT,
+        name: String(_name || name),
         index,
         Inject,
       },

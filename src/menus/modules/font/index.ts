@@ -1,4 +1,4 @@
-import { Module } from '@/core/decorators/module.decorators';
+import { Module } from '@core/decorators/module.decorators';
 import { MenusFontBoldModule } from './bold';
 import { MenusFontColorModule } from './color';
 import { MenusFontHeadModule } from './head';
