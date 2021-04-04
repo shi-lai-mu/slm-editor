@@ -2,6 +2,7 @@ import { InjectImportRender, RegisterRender } from "@core/decorators";
 import { GlobalApi, Injectable, Module } from "@core/decorators/module.decorators";
 import DomElement, { $ } from "@core/dom";
 import { EditorNS } from "@/typings";
+import SelectionHooksEvent from "./hooks/selection.hooks";
 
 /**
  * 编辑内容区类 主模块
@@ -19,6 +20,11 @@ export class BodyModel {
    */
   public $parentEl?: Element;
 
+  /**
+   * 选区事件类
+   */
+  public selection!: SelectionHooksEvent;
+
 
   /**
    * 执行命令
@@ -28,6 +34,7 @@ export class BodyModel {
    */
   @GlobalApi()
   public cmd(commandId: string, showUI?: boolean | undefined, value?: string | undefined) {
+    this.selection.set();
     // 这里先不做过多的处理
     document.execCommand(commandId, showUI, value);
   }
@@ -49,6 +56,7 @@ export class BodyModel {
   @InjectImportRender()
   public render(injectDOM?: Element[]) {
     const $el = $(`<div class="s-text-container" contenteditable="true"></div>`)[0];
+    this.selection = new SelectionHooksEvent($el);
     // TODO: 此处injectDOM为注射器抛出，当前模块注入依赖模块渲染后的元素值，下方主要定义依赖值的渲染位置非固定写法
     $el.append(...(injectDOM || [])); // 直接插入当前节点子级中
     return $el;
