@@ -1,9 +1,10 @@
 export enum MODULE_METADATA {
-  IMPORTS     = 'imports',
-  PROVIDERS   = 'providers',
-  EXPORTS     = 'exports',
-  INJECT      = 'inject',
-  INJECT_GET  = 'inject:get',
+  IMPORTS       = 'imports',
+  PROVIDERS     = 'providers',
+  EXPORTS       = 'exports',
+  INJECT        = 'inject',
+  INJECT_GET    = 'inject:get',
+  INJECT_MODULE = 'inject:module',
 };
 
 export enum ReflectProperty {
