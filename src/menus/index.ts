@@ -2,7 +2,7 @@ import DomElement, { $ } from '@core/dom';
 import { EditorNS } from '@/typings';
 import { MenusFontModule } from './modules/font';
 import { InjectImportRender, RegisterRender } from '@core/decorators';
-import { MenusToolBar } from '@/constants/menus.constants';
+import { RenderModule } from '@/constants/menus.constants';
 import { MenusBackgroundModule } from './modules/background';
 import { Injectable, Module } from '@core/decorators/module.decorators';
 
@@ -33,11 +33,11 @@ export class MenusModel {
    * 注射配置 [渲染模块]
    * - 此处包含渲染排列顺序
    */
-  public injectOptions: MenusToolBar[] = [
+  public injectOptions: RenderModule[] = [
     // 引入本期 三个功能需求
-    MenusToolBar.FONT_HEAD,
-    MenusToolBar.FONT_BOLD,
-    MenusToolBar.FONT_COLOR,
+    RenderModule.FONT_HEAD,
+    RenderModule.FONT_BOLD,
+    RenderModule.FONT_COLOR,
   ];
 
 

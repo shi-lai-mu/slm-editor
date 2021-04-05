@@ -23,6 +23,7 @@ export default class Editor {
    */
   constructor(editorOptions: EditorNS.CreateOptions) {
     this.$ = new AppModule(editorOptions);
+    // 总渲染方法可以保留给实例，列如create后再执行，此处先直接执行
     this.$.render();
   }
 

@@ -1,4 +1,4 @@
-import { MenusColors, MenusHead, MenusToolBar } from "@/constants/menus.constants";
+import { MenusColors, MenusHead, RenderModule } from "@/constants/menus.constants";
 import Editor from "..";
 
 declare global {
@@ -34,14 +34,14 @@ export namespace EditorNS {
     /**
      * 配置工具栏
      * @description 配置菜单栏、删减菜单、调整顺序
-     * @enum (MenusToolBar) or (set false disable)
+     * @enum (RenderModule) or (set false disable)
      * @see <https://github.com/shi-lai-mu/slm-editor/docs/toolbar.md>
      */
-    toolbar?: MenusToolBar[] | false;
+    toolbar?: RenderModule[] | false;
     /**
      * 配置颜色
      * @description 编辑器的字体颜色和背景色
-     * @enum (MenusToolBar) or (set false disable)
+     * @enum (RenderModule) or (set false disable)
      * @see <https://github.com/shi-lai-mu/slm-editor/docs/colors.md>
      */
     colors?: MenusColors[] | string[] | false;

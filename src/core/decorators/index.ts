@@ -16,7 +16,7 @@ export function RegisterRender(name: string): ClassDecorator {
   return (target: Function) => {
     rendModelList[name] = target;
     Reflect.defineMetadata(ReflectProperty.RENDER_INJECT, name, target);
-    console.info(`    ↓   register menu #${name}`);
+    console.info(`    ↓   register render #${name}`);
   };
 };
 
@@ -25,7 +25,7 @@ export function RegisterRender(name: string): ClassDecorator {
  * 装饰器 标记方法为渲染方法
  */
  export function InjectImportRender(): MethodDecorator {
-  return (target: any, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
+  return (target: any, _propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
     const originMethod = descriptor.value.bind(target);
     descriptor.value = function() {
       const { injectOptions, $parentEl } = this as any;
@@ -39,15 +39,15 @@ export function RegisterRender(name: string): ClassDecorator {
           if (moduleClass && moduleClass.render) {
             const renderNode = moduleClass.render();
             if (Array.isArray(renderNode)) {
-              nodes.append(...renderNode as any);
+              nodes.append(...renderNode);
             }
           }
         }
       });
-      const value = originMethod([ ...nodes.children as any ]);
+      const value = originMethod(nodes.children);
       if ($parentEl) {
         (<HTMLElement>$parentEl).append(
-          ( Array.isArray(value) ? value :  value ) as any
+          ( Array.isArray(value) ? value :  value )
         );
       }
     }

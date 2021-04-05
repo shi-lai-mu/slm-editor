@@ -1,7 +1,7 @@
 /**
  * 菜单工具 栏枚举
  */
-export enum MenusToolBar {
+export enum RenderModule {
   FONT_BOLD  = 'FontBold',
   FONT_HEAD  = 'FontHead',
   FONT_COLOR = 'FontColor',
@@ -9,6 +9,8 @@ export enum MenusToolBar {
   LINK       = 'link',
   ITALIC     = 'italic',
   UNDERLINE  = 'underlink',
+  MENU       = 'Menu',
+  BODY       = 'Body',
 }
 
 /**

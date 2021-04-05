@@ -28,6 +28,7 @@ export function Module(metadata: ModuleMetadata): ClassDecorator {
           ReflectProperty.IMPORTS_EXTRACT,
           propertySealDescriptor(metadata[property]?.map((v: any) => {
             const find = findTarget(v);
+            // 处理 code...
             return find;
           })),
         );

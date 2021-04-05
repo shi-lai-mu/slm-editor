@@ -17,7 +17,6 @@ export default class SelectionHooksEvent extends Hooks {
    */
   constructor(private readonly root: Element) {
     super(document, 'selectionchange');
-    console.log(root, this.root);
   }
 
 

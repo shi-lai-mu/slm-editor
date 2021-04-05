@@ -1,6 +1,6 @@
 import { BodyModel } from "@/body";
 import { MODULE_METADATA } from "@/constants/decorators.constants";
-import { MenusToolBar } from "@/constants/menus.constants";
+import { RenderModule } from "@/constants/menus.constants";
 import { $, DomBase } from "@core/dom";
 import { InjectRepository } from "@/menus/decorators";
 import { fontColor } from "@/menus/icon";
@@ -10,7 +10,7 @@ import { Injectable } from "@/core/decorators/module.decorators";
 /**
  * 菜单拓展 文字 颜色 模块
  */
-@RegisterRender(MenusToolBar.FONT_COLOR)
+@RegisterRender(RenderModule.FONT_COLOR)
 @Injectable
 export class MenusFontColorModule {
 

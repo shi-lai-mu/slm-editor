@@ -1,6 +1,6 @@
 import { BodyModel } from "@/body";
 import { MODULE_METADATA } from "@/constants/decorators.constants";
-import { MenusToolBar } from "@/constants/menus.constants";
+import { RenderModule } from "@/constants/menus.constants";
 import { Injectable } from "@core/decorators/module.decorators";
 import { $, DomBase } from "@core/dom";
 import { InjectRepository } from "@/menus/decorators";
@@ -11,7 +11,7 @@ import { RegisterRender } from "@core/decorators";
  * 菜单拓展 文字 标题 模块
  */
  @Injectable
- @RegisterRender(MenusToolBar.FONT_HEAD)
+ @RegisterRender(RenderModule.FONT_HEAD)
 export class MenusFontHeadModule {
 
   /**

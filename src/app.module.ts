@@ -5,12 +5,12 @@ import { MenusModel } from './menus';
 import { InjectRepository, ConfigInit } from './menus/decorators';
 import { EditorNS } from './typings';
 import { InjectImportRender } from './core/decorators';
+import { RenderModule } from './constants/menus.constants';
 // import { ReflectProperty } from './constants/decorators.constants';
 
 /**
  * 编辑器类 (总模块 注入点)
  */
-// @Injectable
 @Module({
   imports: [
     MenusModel,
@@ -31,8 +31,8 @@ export default class AppModule {
    * - 编辑器主体模块部分渲染及顺序
    */
   private injectOptions: string[] = [
-    'Menu',
-    'Body',
+    RenderModule.MENU,
+    RenderModule.BODY,
   ];
 
   /**
